@@ -26,6 +26,10 @@ public class ArrayManager : MonoBehaviour
     bool greaterThan = false;
     bool equals = false;
 
+    //bools to prevent false logic
+    bool parameterOne = false;
+    bool parameterThree = false;
+
     public List<Image> array = new List<Image>();
 
     private void Awake()
@@ -42,7 +46,7 @@ public class ArrayManager : MonoBehaviour
         {
             array[i].enabled = false;
         }
-        if (equals)
+        if (equals && parameterOne && parameterThree)
         {
             for(int i = i1; i == i2; i += i3)
             {
@@ -62,7 +66,7 @@ public class ArrayManager : MonoBehaviour
                     break;
                 }
             }
-        }else if (lessThan)
+        }else if (lessThan && parameterOne && parameterThree)
         {
             for (int i = i1; i < i2; i += i3)
             {
@@ -94,7 +98,7 @@ public class ArrayManager : MonoBehaviour
                 //reveals the winning window
                 winCondition.SetActive(true);
             }
-        }else if (greaterThan)
+        }else if (greaterThan && parameterOne && parameterThree)
         {
             for (int i = i1; i > i2; i += i3)
             {
@@ -118,30 +122,39 @@ public class ArrayManager : MonoBehaviour
     }
     public void Answer1()
     {
+        parameterOne = true;
         TextA.text = "i=0";
         i1 = 1;
     }
 
     public void Answer2()
     {
+        parameterOne = true;
+
         TextA.text = "i=1";
         i1 = 2;
     }
 
     public void Answer3()
     {
+        parameterOne = true;
+
         TextA.text = "i=7";
         i1 = 7;
     }
 
     public void Answer4()
     {
+        parameterOne = true;
+
         TextA.text = "i=-1";
         i1 = 0; 
     }
 
     public void Answer5()
     {
+        parameterOne = true;
+
         TextA.text = "i=6";
         i1 = 7;
     }
@@ -194,44 +207,58 @@ public class ArrayManager : MonoBehaviour
 
     public void Answer11()
     {
+        parameterThree = true;
+
         TextC.text = "i=i";
         i3 = 0;
     }
 
     public void Answer12()
     {
+        parameterThree = true;
+
         TextC.text = "i=i+1";
         i3 = 1;
     }
 
     public void Answer13()
     {
+        parameterThree = true;
+
         TextC.text = "i=i+2";
         i3 = 2;
     }
 
     public void Answer14()
     {
+        parameterThree = true;
+
         TextC.text = "i=i-1";
         i3 = -1;
     }
 
     public void Answer15()
     {
+        parameterThree = true;
+
         TextC.text = "i=i-2";
         i3 = -2;
     }
 
     public void Clear()
     {
+        //resets all the variables
         TextA.text = "";
         TextB.text = "";
         TextC.text = "";
         i1 = 0;
         i2 = 0;
         i3 = 0;
-        lessThan = true;
+        greaterThan = false;
+        lessThan = false;
         equals = false;
+        parameterOne = false;
+        parameterThree = false;
         for (int i = 0; i < array.Count; i++)
         {
             array[i].enabled = false;
